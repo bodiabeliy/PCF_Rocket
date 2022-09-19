@@ -2,12 +2,13 @@ import {makeAutoObservable} from 'mobx'
 import axios from 'axios'
 
 class getSpaceCrafts {
+    AllspaceCrafts =[]
 
-   
+   // method for getting data about type of spacecrafts
     async getSpaceCrafts() {
-        const request = await axios.get<any>('http://localhost:3000/celementsList')
-        console.log('getting data', request.data);
-        
+        const request = await (await axios.get<[]>('http://localhost:3000/celementsList')).data
+        this.AllspaceCrafts =[...request]
+      return request  
     }
 
 }

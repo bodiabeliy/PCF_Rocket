@@ -1,6 +1,8 @@
 {
   "celementsList": [
-    { "id": 1, "title": "Falcon-1", "image": "https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fstart-linkImg-1.png?alt=media&token=393963b4-6a85-4f7f-92ef-ea3c0b8aab89" }
+    { "_uid": 1, "title": "Saturn-5", "image": null},
+    { "_uid": 2, "title": "Falcon-1", "image": "https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fstart-linkImg-1.png?alt=media&token=393963b4-6a85-4f7f-92ef-ea3c0b8aab89" },
+    { "_uid": 3, "title": "Starship", "image": null }
   ],
   "comments": [
     { "id": 1, "body": "some comment", "postId": 1 }
