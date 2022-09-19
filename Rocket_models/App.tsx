@@ -1,13 +1,10 @@
 import * as React from 'react';
-import TableComponent  from './components/Table'
-import Buttons from './components/testMobxCounter'
+import MainPage  from './components/MainPage'
 
-function Test () {
+function App () {
   return ( <>
-    Root component
-    <TableComponent />
-    < Buttons />
+    <MainPage />
   </> );
 }
 
-export default Test;
+export default App;

@@ -2,7 +2,7 @@ import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import App  from "./App";
 import * as React from "react";
 
-export class DataTable implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class RocketModels implements ComponentFramework.ReactControl<IInputs, IOutputs> {
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
     private notifyOutputChanged: () => void;
 
