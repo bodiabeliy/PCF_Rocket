@@ -1,0 +1,17 @@
+.page__container {
+    background-image: linear-gradient(to bottom, 
+    #062c43, 
+    #083550,
+    #0b3e5c,
+    #0e476a, 
+    #115177, 
+    #166186, 
+    #1c7195, 
+    #2481a3,
+    #3b9bb4, 
+    #57b6c2, 
+    #77d0d0, 
+    #9aeadd);
+    width: 100%;
+    height: 100vh;
+}

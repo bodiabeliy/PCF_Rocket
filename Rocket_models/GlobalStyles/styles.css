@@ -1,0 +1,13 @@
+/* only for development */
+.control-pane {
+    padding: 0;
+}
+.control-container {
+    border: none;
+}
+.io-pane {
+    display: none;
+}
+.navbar {
+    display: none;
+}

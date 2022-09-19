@@ -1,9 +1,9 @@
 import * as React from 'react';
-import MainPage  from './components/MainPage'
-
+import InitialPage from './components/MainPage/InitialPage'
+import './GlobalStyles/styles.css'
 function App () {
   return ( <>
-    <MainPage />
+    <InitialPage />
   </> );
 }
 
