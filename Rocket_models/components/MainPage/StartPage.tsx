@@ -10,8 +10,8 @@ const StartPage = () => {
 
     return ( 
     <div className="page__container">
-        <div className="page__element-list">
-        <SpaceCraftsList />
+        <div className="page__spacecraft-list">
+            <SpaceCraftsList />
         </div>
     </div> );
 }

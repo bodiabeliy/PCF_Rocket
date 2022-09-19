@@ -19,8 +19,8 @@ const SpaceCraftsList = observer (() => {
     }, [])
 
     return ( 
-    <div className="t">
-        { spaceCraftsArray.map((spaceCraft:SpaceCraftInterface) =><SpaceCraft props={spaceCraft}/>)}
+    <div className="page__spacecraft-element">
+        { spaceCraftsArray.map((spaceCraft:SpaceCraftInterface) =><SpaceCraft props={spaceCraft} key={spaceCraft._uid}/>)}
     </div>
    );
 })
