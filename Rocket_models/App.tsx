@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createBrowserRouter, HashRouter, RouterProvider  } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider  } from 'react-router-dom';
 import MainPage from './components/MainPage/MainPage'
 
 import './GlobalStyles/styles.css'

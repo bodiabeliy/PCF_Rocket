@@ -2,6 +2,9 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Button, Modal } from 'antd';
 import * as React from 'react';
 
+
+import "antd/dist/antd.css";
+
 const { confirm } = Modal;
 
 const destroyAll = () => {

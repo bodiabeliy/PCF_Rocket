@@ -1,13 +1,24 @@
 import * as React from 'react';
 import SpaceCraftInterface from '../../interfaces/spaceCraft'
-import { Button, Popover } from 'antd';
-import {RocketOutlined, FileTextOutlined, ClusterOutlined } from '@ant-design/icons';
+import { Button, Modal, Popover } from 'antd';
+import {RocketOutlined, FileTextOutlined, ClusterOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 
 import DetailedInfoPage from '../../components/DetailizeInfo/DetailizeInfoPage'
+const { confirm } = Modal;
 
 import "antd/dist/antd.css";
 
+const ConfirmTreeSchema = () => {
+        confirm({
+          content: <Button>Tree Schema</Button>,
+        })
+};
 
+const ConfirmModelPanel = () => {
+    confirm({
+      content: <Button>Tree Schema</Button>,
+    })
+};
 
 const SpaceCraft = (props:SpaceCraftInterface|any) => {
     
@@ -17,16 +28,21 @@ const SpaceCraft = (props:SpaceCraftInterface|any) => {
 
     const OpenModal = () => {
         setIsModalOpen(!isModalOpen)
-        console.log('isModalOpen = ', isModalOpen);
+        
+        // console.log('isModalOpen = ', isModalOpen);
         
     }
 
     const showTreeSchema = () => {
-        setIsModelShow(true)
+        setIsTreeShow(true)
+        ConfirmTreeSchema()
+
     }
 
     const showModel = () => {
-        setIsTreeShow(true)
+        ConfirmModelPanel()
+        setIsModelShow(true)
+
     }
 
     const fieldMenu = (
@@ -57,7 +73,7 @@ const SpaceCraft = (props:SpaceCraftInterface|any) => {
         </div>
     </div>
 
-    {isModelShow || isTreeShow && <DetailedInfoPage />}
+    {/* {isModelShow || isTreeShow && <DetailedInfoPage />} */}
 
     </> );
 }
