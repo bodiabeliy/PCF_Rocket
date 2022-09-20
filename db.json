@@ -1,6 +1,6 @@
 {
   "celementsList": [
-    { "_uid": 1, "title": "Rockets"},
-    { "_uid": 2, "title": "Shuttles" }
+    { "_uid": 1, "title": "Rockets", "logoRocket":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fstart-linkImg.png?alt=media&token=f14cbaa7-4f4f-48df-9a4f-67e1c82383f5"},
+    { "_uid": 2, "title": "Shuttles", "logoShuttle":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fshuttle-linkImg.png?alt=media&token=0a35e2c2-d796-4177-8811-7eca07d27611" }
   ]
 }
