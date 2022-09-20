@@ -5,9 +5,7 @@ import SpaceCraftsList from './SpaceCraftsList';
 import './styles.css'
 
 const StartPage = () => {
-
- 
-
+    
     return ( 
     <div className="page__container">
         <div className="page__spacecraft-list">
