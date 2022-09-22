@@ -34,6 +34,8 @@ export class RocketModels implements ComponentFramework.ReactControl<IInputs, IO
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
+        console.log('');
+        
         return React.createElement(
             App
         );
