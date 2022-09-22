@@ -7,10 +7,21 @@ class getSpaceCrafts {
 
    // method for getting data about type of spacecrafts
     async getSpaceCrafts() {
-        const request = await (await axios.get<SpaceCraftInterface[]>('http://localhost:3000/celementsList')).data
+        const request = await (await axios.get<SpaceCraftInterface[]>('http://localhost:3000/spaceCraftList')).data
+        
         this.AllspaceCrafts =[...request]
       return request  
     }
+
+    async getSpaceCraftsSchema() {
+      const request = await (await axios.get<SpaceCraftInterface[]>('http://localhost:3000/spaceCraftSchema')).data
+      console.log('req schema', request);
+
+      this.AllspaceCrafts =[...request]
+    return request  
+  }
+
+
 
 }
 

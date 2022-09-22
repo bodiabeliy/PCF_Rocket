@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .page__container {
     background-image: linear-gradient(to bottom, 
     #062c43, 
@@ -25,7 +27,6 @@
 }
 
 .page__spacecraft-element {
-    width: 70%;
     display: flex;
     justify-content: space-between;
     color: wheat;
@@ -40,6 +41,10 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+}
+.spacecraft-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
 }
 
 .align-picture {

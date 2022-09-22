@@ -11,3 +11,25 @@
 .navbar {
     display: none;
 }
+
+/* reusable antd component styles */
+.ant-modal {
+    top: 15px;
+    height: 100% !important; 
+    width: 100% !important;
+}
+
+.ant-modal .ant-modal-confirm .ant-modal-confirm-confirm {
+    height: 100% !important; 
+    width: 100% !important;
+}
+.ant-modal-wrap {
+    height: 100% !important;
+}
+.ant-modal-content {
+    height: calc(100% - 5px);
+}
+
+.ant-modal-confirm .ant-modal-confirm-btns {
+    margin-top: 325px;
+}
