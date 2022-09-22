@@ -13,9 +13,7 @@ const SpaceCraftsList = observer (() => {
     React.useEffect(() => {
         spaceCrafts.getSpaceCrafts().then((data:SpaceCraftInterface[]) => {
             setSpaceCraftsArray(data)            
-        });  
-       
-            
+        }); 
     }, [])
 
     return ( 

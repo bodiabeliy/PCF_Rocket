@@ -11,9 +11,9 @@ const ModelSchema = (model:any) => {
     return ( 
         <>
         <div className="">
-            {`Model title № ` + model.model}
+            View mode:<b>{model.model.schemaTitle}</b>
         </div>
-        <img style={{maxWidth:'100%'}} src="https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2FSpace_Shuttle.svg?alt=media&token=683a5a37-808b-49c7-9dc0-357d43ccdd75" alt="" />
+        <img style={{maxWidth:'80%', marginLeft: "10%"}} src={model.model.schemaUrl} alt="Other rocket" />
         </>
      );
 }

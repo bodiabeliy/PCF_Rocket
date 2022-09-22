@@ -5,13 +5,10 @@
     { "_uid": 3, "title": "Other", "logoOthers":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fshuttle-linkImg.png?alt=media&token=0a35e2c2-d796-4177-8811-7eca07d27611" }
 
   ],
-  "spaceCraftSchema": [
-    {
-      "otherRocket": {
-        "generalImage":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fshuttle-generalschema.png?alt=media&token=c96ed1d7-2c10-48a7-ad8a-edb02777abcb",
-        "schemaImage":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2FSpace_Shuttle.svg?alt=media&token=683a5a37-808b-49c7-9dc0-357d43ccdd75"
-    }
+  "spaceCraftSchema": {
+    "type":[
+      {"typeId":2, "schemaTitle":"Photo", "schemaUrl": "https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fshuttle-generalschema.png?alt=media&token=c96ed1d7-2c10-48a7-ad8a-edb02777abcb"},
+      {"typeId":5, "schemaTitle":"Schema", "schemaUrl": "https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2FSpace_Shuttle.svg?alt=media&token=683a5a37-808b-49c7-9dc0-357d43ccdd75"}    
+    ]
   }
-
-  ]
 }

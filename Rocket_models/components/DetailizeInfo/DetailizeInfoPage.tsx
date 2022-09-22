@@ -1,17 +1,29 @@
 import type { RadioChangeEvent } from 'antd';
 import { Radio, Tabs } from 'antd';
 import * as React from 'react';
+import {observer} from 'mobx-react-lite';
+
+import spaceCrafts from '../../store/spaceCrafts';
 
 import ModelSchema from '../utilises/ModelSchema'
 
 type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 
-const DetailizeInfo: React.FC = () => {
+const DetailizeInfo: React.FC = observer (() => {
   const [mode, setMode] = React.useState<TabPosition>('left');
 
   const handleModeChange = (e: RadioChangeEvent) => {
     setMode(e.target.value);
   };
+
+  const [spaceCraftSchemas, setSpaceCraftSchemas] = React.useState<any>(null)
+
+  React.useMemo(() => {
+      spaceCrafts.getSpaceCraftsSchema().then((data:any) => {
+          setSpaceCraftSchemas(data)
+      }); 
+  
+  }, [])
 
   return (
     <div>
@@ -20,17 +32,17 @@ const DetailizeInfo: React.FC = () => {
         defaultActiveKey="1"
         tabPosition={mode}
         style={{ height: 220 }}
-        items={new Array(3).fill(null).map((_, i) => {
-          const id = String(i);
+        items={spaceCraftSchemas?.type.map((id:any) => {
+          
           return {
-            label: `Tab-${id}`,
-            key: id +1,
-            children: <ModelSchema model={id}  />,
-          };
+            label:id.schemaTitle,
+            key:id,
+            children: <ModelSchema model={id}  />
+          }
         })}
       />
     </div>
   );
-};
+});
 
 export default DetailizeInfo;
