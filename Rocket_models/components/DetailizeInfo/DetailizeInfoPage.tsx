@@ -19,7 +19,7 @@ const DetailizeInfo: React.FC = observer (() => {
   const [spaceCraftSchemas, setSpaceCraftSchemas] = React.useState<any>(null)
 
   React.useMemo(() => {
-      spaceCrafts.getSpaceCraftsSchema().then((data:any) => {
+      spaceCrafts.getSpaceCraftSchema().then((data:any) => {
           setSpaceCraftSchemas(data)
       }); 
   

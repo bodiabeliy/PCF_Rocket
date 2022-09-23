@@ -22,9 +22,11 @@ export class RocketModels implements ComponentFramework.ReactControl<IInputs, IO
      */
     public init(
         context: ComponentFramework.Context<IInputs>,
+        
         notifyOutputChanged: () => void,
         state: ComponentFramework.Dictionary
     ): void {
+       
         this.notifyOutputChanged = notifyOutputChanged;
     }
 
@@ -34,8 +36,21 @@ export class RocketModels implements ComponentFramework.ReactControl<IInputs, IO
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        console.log('');
-        
+        console.log('context', context);
+        // context.webAPI.createRecord('RocketApp', {
+        //     "spaceCraftList": [
+        //       { "_uid": 1, "title": "Rusable", "logoRocket":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2FstartImgLink-3.png?alt=media&token=4be16c10-a64e-42ab-a97c-af48514d0a1d"},
+        //       { "_uid": 2, "title": "Disposable", "logoShuttle":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fstart-linkImg.png?alt=media&token=f14cbaa7-4f4f-48df-9a4f-67e1c82383f5" },
+        //       { "_uid": 3, "title": "Other", "logoOthers":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fshuttle-linkImg.png?alt=media&token=0a35e2c2-d796-4177-8811-7eca07d27611" }
+          
+        //     ],
+        //     "spaceCraftSchema": {
+        //       "type":[
+        //         {"typeId":2, "schemaTitle":"Photo", "schemaUrl": "https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fshuttle-generalschema.png?alt=media&token=c96ed1d7-2c10-48a7-ad8a-edb02777abcb"},
+        //         {"typeId":5, "schemaTitle":"Schema", "schemaUrl": "https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2FSpace_Shuttle.svg?alt=media&token=683a5a37-808b-49c7-9dc0-357d43ccdd75"}    
+        //       ]
+        //     }
+        //   })
         return React.createElement(
             App
         );

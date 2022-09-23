@@ -6,7 +6,7 @@ import SpaceCraftInterface from '../../interfaces/spaceCraft'
 
 
 
-const SpaceCraftsList = observer (() => {
+const SpaceCraftsMenu = observer (() => {
 
     const [spaceCraftsArray, setSpaceCraftsArray] = React.useState<SpaceCraftInterface[]>([])
 
@@ -23,4 +23,4 @@ const SpaceCraftsList = observer (() => {
    );
 })
  
-export default SpaceCraftsList;
+export default SpaceCraftsMenu;
