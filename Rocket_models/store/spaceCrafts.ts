@@ -21,8 +21,8 @@ class getSpaceCrafts {
     return request  
   }
 
-  async getSpaceCraftsList() {
-    const request = await (await axios.get<any>('http://localhost:3000/RocketsListByType')).data
+  async getSpaceCraftsList(typeId:any) {
+    const request = await (await axios.get<any>(`http://localhost:3000/RocketsListByType/${typeId}`)).data    
     this.SpaceCraftsMeny =[...request]
   return request  
 }

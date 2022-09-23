@@ -9,12 +9,6 @@ const { confirm } = Modal;
 
 import "antd/dist/antd.css";
 
-const ConfirmTreeSchema = () => {
-        confirm({
-            icon:null,
-            content: <Button>Tree Schema</Button>,
-        })
-};
 
 const ConfirmModelPanel = () => {
    
@@ -29,7 +23,7 @@ const SpaceCraft = (props:SpaceCraftInterface|any) => {
         setIsModelShow(true)
         confirm({
             icon:null,
-            content: <SpaceCraftList />,
+            content: <SpaceCraftList typeId={props.props.id} />,
             onOk:(() =>{}),
         })
 
@@ -52,10 +46,10 @@ const SpaceCraft = (props:SpaceCraftInterface|any) => {
     return ( <>
     <div className="spacecraft-card" onClick={() => OpenModal()}>
         <div className="spacecraft-wrapper">
-            {props.props._uid ==2 ? 
+            {props.props.id ==2 ? 
                <img className="spacecraft-image" src="https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2FstartImgLink-3.png?alt=media&token=4be16c10-a64e-42ab-a97c-af48514d0a1d" />
-            :props.props._uid ==1 ? 
-            <img className={props.props._uid == 1 ? "align-picture spacecraft-image": "spacecraft-image" } src="https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fstart-linkImg.png?alt=media&token=f14cbaa7-4f4f-48df-9a4f-67e1c82383f5" />
+            :props.props.id ==1 ? 
+            <img className={props.props.id == 1 ? "align-picture spacecraft-image": "spacecraft-image" } src="https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fstart-linkImg.png?alt=media&token=f14cbaa7-4f4f-48df-9a4f-67e1c82383f5" />
             :
             <img className="spacecraft-image" src="https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Fshuttle-linkImg.png?alt=media&token=0a35e2c2-d796-4177-8811-7eca07d27611" />
             }

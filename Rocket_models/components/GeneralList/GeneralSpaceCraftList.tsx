@@ -10,7 +10,7 @@ import Meta from 'antd/lib/card/Meta';
 import { ClusterOutlined, RocketOutlined } from '@ant-design/icons';
 
 
-const SpaceCraftList: React.FC = observer(() => {
+const SpaceCraftList = observer((typeId:any) => {
 
   const [spaceCraftList, setSpaceCraftList] = React.useState([])
   const [spaceCraftSchema, setSpaceCraftSchema] = React.useState()
@@ -37,8 +37,10 @@ const ConfirmTreeSchema = () => {
 };
 
   React.useEffect(() => {
-    spaceCraftsList.getSpaceCraftsList().then(data => {
-      setSpaceCraftList(data)
+    console.log('typeId', typeId.typeId);
+    
+    spaceCraftsList.getSpaceCraftsList(typeId.typeId).then(data => {
+      setSpaceCraftList(data.spaceCrafts)
     })
   }, [])
 

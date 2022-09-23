@@ -18,7 +18,7 @@ const SpaceCraftsMenu = observer (() => {
 
     return ( 
     <div className="page__spacecraft-element">
-        { spaceCraftsArray.map((spaceCraft:SpaceCraftInterface) =><SpaceCraft props={spaceCraft} key={spaceCraft._uid}/>)}
+        { spaceCraftsArray.map((spaceCraft:SpaceCraftInterface) =><SpaceCraft props={spaceCraft} key={spaceCraft.id}/>)}
     </div>
    );
 })

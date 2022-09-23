@@ -1,5 +1,5 @@
 export default interface SpaceCraft {
-    _uid:number;
+    id:number;
     title:string;
     logoRocket?:string;
     logoShuttle?:string
