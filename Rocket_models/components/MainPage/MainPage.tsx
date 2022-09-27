@@ -25,7 +25,7 @@ const StartPage = () => {
         let publicClient = new PublicClientApplication({
             auth: {
                 clientId:AppConfig.AppConfig.appId,
-                redirectUri:'http://localhost:3000'
+                redirectUri:'http://localhost:8181'
             },
             cache: {
                 cacheLocation:"localStorage",
@@ -65,7 +65,7 @@ const StartPage = () => {
         let publicClient = new PublicClientApplication({
             auth: {
                 clientId:AppConfig.AppConfig.appId,
-                redirectUri:'http://localhost:3000'
+                redirectUri:'http://localhost:8181'
             },
             cache: {
                 cacheLocation:"localStorage",
@@ -74,14 +74,12 @@ const StartPage = () => {
         }).loginPopup()
         setClientInfo(publicClient)
         setAuthorization(true)
-        console.log('function recieved', clientInfo);
         
     }
 
     return ( 
     <div className="page__container">
         <div className="page__spacecraft-menu">
-            {console.log('status of auth', isAuthorization)}
            {isAuthorization == true ?  <SpaceCraftsMenu />
            :  <Button onClick={() => login()}>Loggin to system</Button>
            }
