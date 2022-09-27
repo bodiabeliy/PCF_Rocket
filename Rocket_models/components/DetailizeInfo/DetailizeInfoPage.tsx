@@ -9,7 +9,7 @@ import ModelSchema from '../utilises/ModelSchema'
 
 type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 
-const DetailizeInfo: React.FC = observer (() => {
+const DetailizeInfo = observer ((rocketSchemas:any) => {
   const [mode, setMode] = React.useState<TabPosition>('left');
 
   const handleModeChange = (e: RadioChangeEvent) => {
@@ -19,9 +19,9 @@ const DetailizeInfo: React.FC = observer (() => {
   const [spaceCraftSchemas, setSpaceCraftSchemas] = React.useState<any>(null)
 
   React.useMemo(() => {
-      spaceCrafts.getSpaceCraftSchema().then((data:any) => {
-          setSpaceCraftSchemas(data)
-      }); 
+      // spaceCrafts.getSpaceCraftSchema_(rocketId).then((data:any) => {
+      //     setSpaceCraftSchemas(data)
+      // }); 
   
   }, [])
 
@@ -35,7 +35,7 @@ const DetailizeInfo: React.FC = observer (() => {
         items={spaceCraftSchemas?.type.map((id:any) => {
           
           return {
-            label:id.schemaTitle,
+            label:'id',
             key:id,
             children: <ModelSchema model={id}  />
           }

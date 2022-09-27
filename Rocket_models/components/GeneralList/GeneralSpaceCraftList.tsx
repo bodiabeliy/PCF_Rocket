@@ -9,22 +9,21 @@ import "antd/dist/antd.css";
 import Meta from 'antd/lib/card/Meta';
 import { ClusterOutlined, RocketOutlined } from '@ant-design/icons';
 
+import SpaceSchema from '../utilises/ModelSchema'
+
 
 const SpaceCraftList = observer((typeId:any) => {
 
-  const [spaceCraftList, setSpaceCraftList] = React.useState([])
-  const [spaceCraftSchema, setSpaceCraftSchema] = React.useState()
+  const [spaceCraftList_, setSpaceCraftList] = React.useState([])
+  const [spaceCraftSchems, setSpaceCraftSchems] = React.useState([])
 
- const [open, setOpen] = React.useState(false);
-
- const [isModalOpen, setIsModalOpen] = React.useState(false)
  const [isModelShow, setIsModelShow] = React.useState(false)
  const [isTreeShow, setIsTreeShow] = React.useState(false)
 
  const ConfirmModelPanel = () => {
   confirm({
       icon:null,
-      content: <img />,
+      content: <SpaceSchema rocketSchemas={spaceCraftSchems} />,
       onOk:(() =>{}),
   })
 };
@@ -41,8 +40,16 @@ const ConfirmTreeSchema = () => {
     
     spaceCraftsList.getSpaceCraftsList(typeId.typeId).then(data => {
       setSpaceCraftList(data.spaceCrafts)
+      ParsingSchemaData(data.spaceCrafts)
     })
   }, [])
+
+
+  const ParsingSchemaData = (spaceCraftElements:any) => {
+    spaceCraftElements.map((data:any) => {
+      setSpaceCraftSchems( data.spaceCraftSchema.type)
+    })
+  }
 
 
   
@@ -59,10 +66,10 @@ const ConfirmTreeSchema = () => {
   }
 
   const DetailedCard = (id:any) => {
-    spaceCraftsList.getSpaceCraftSchema_(id).then(data => {
-      setSpaceCraftSchema(data)
+    // spaceCraftsList.getSpaceCraftSchema_(id).then(data => {
+    //   setSpaceCraftSchema(data)
       
-    })
+    // })
   }
 
   const fieldMenu = (
@@ -78,9 +85,10 @@ const ConfirmTreeSchema = () => {
 
   return (
   <div className="site-card-wrapper">
+    {console.log("spaceCraftList_", spaceCraftList_)}
     {/* {console.log('spaceCraftList', spaceCraftList)} */}
     <Row gutter={16}>
-      { spaceCraftList.map((spaceCraftElement:any) => 
+      { spaceCraftList_.map((spaceCraftElement:any) => 
       <>
         <Popover content={fieldMenu} title="Select option:" trigger="click">
           <Col span={8}>

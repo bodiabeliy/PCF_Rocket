@@ -15,24 +15,22 @@ class getSpaceCrafts {
       return request  
     }
 
-    async getSpaceCraftSchema() {
-      const request = await (await axios.get<any>('http://localhost:3000/spaceCraftSchema')).data
-      this.SpaceCraftsMeny =[...request]
-    return request  
-  }
+   
 
-  async getSpaceCraftsList(typeId:any) {
-    const request = await (await axios.get<any>(`http://localhost:3000/RocketsListByType/${typeId}`)).data    
+  async getSpaceCraftSchema(typeId:any) {
+    const request = await (await axios.get<any>(`http://localhost:3000/RocketsListByType/${typeId}`)).data   
+     
     this.SpaceCraftsMeny =[...request]
   return request  
 }
 
-
-  async getSpaceCraftSchema_(id:any) {
-    const request = await (await axios.get<any>(`http://localhost:3000/RocketsListByType/${id}`)).data
-    this.SpaceCraftsMeny =[...request]
-  return request  
+async getSpaceCraftsList(typeId:any) {
+  const request = await (await axios.get<any>(`http://localhost:3000/RocketsListByType/${typeId}`)).data    
+  this.SpaceCraftsMeny =[...request]
+return request  
 }
+
+
 
 
 }

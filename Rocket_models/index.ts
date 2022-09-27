@@ -1,8 +1,10 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import App  from "./App";
 import * as React from "react";
+import {AppConfig} from '../AppConfig'
+import {PublicClientApplication} from '@azure/msal-browser'
 
-export class RocketModels implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class RocketModels  implements ComponentFramework.ReactControl<IInputs, IOutputs> {
 
     
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
@@ -11,7 +13,7 @@ export class RocketModels implements ComponentFramework.ReactControl<IInputs, IO
     /**
      * Empty constructor.
      */
-    constructor() { }
+    
 
     /**
      * Used to initialize the control instance. Controls can kick off remote server calls and other initialization actions here.
@@ -36,7 +38,6 @@ export class RocketModels implements ComponentFramework.ReactControl<IInputs, IO
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        console.log('context', context);
         // context.webAPI.createRecord('RocketApp', {
         //     "spaceCraftList": [
         //       { "_uid": 1, "title": "Rusable", "logoRocket":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2FstartImgLink-3.png?alt=media&token=4be16c10-a64e-42ab-a97c-af48514d0a1d"},
