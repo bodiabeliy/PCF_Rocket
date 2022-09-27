@@ -3,11 +3,9 @@ import {observer} from 'mobx-react-lite'
 
 import {PublicClientApplication} from '@azure/msal-browser'
 import * as AppConfig from '../../../AppConfig'
-import * as GraphService from '../../../GraphService'
 
 import SpaceCraftsMenu from './SpaceCraftsMenu';
 import './styles.css'
-import { Button } from 'antd';
 
 const StartPage = () => {
 
@@ -37,30 +35,6 @@ const StartPage = () => {
     }
 
 
-
-    
-
-    //  const  login = async() => {
-    //     try {
-    //         await userAppConfig.loginPopup({
-    //             scopes:AppConfig.scopes,
-    //             prompt:'Select '
-    //         })
-    //         await getUserProfile()
-    //         let user = userAppConfig.getAccount()
-    //         console.log('user data recieved', user);
-            
-    //     } catch (error) {
-    //         console.log('Error in Login proccess', error);
-    //     }
-    // }
-
-    // const logout =() => {
-    //     userAppConfig.logout()
-    // }
-
-
-
     const login = async() => {        
         let publicClient = new PublicClientApplication({
             auth: {
@@ -81,7 +55,10 @@ const StartPage = () => {
     <div className="page__container">
         <div className="page__spacecraft-menu">
            {isAuthorization == true ?  <SpaceCraftsMenu />
-           :  <Button onClick={() => login()}>Loggin to system</Button>
+           :  
+           <div className="page__InitialSign">
+            <button className="page__InitialSign-btn" onClick={() => login()}>SIGN IN</button>
+           </div>
            }
         </div>
     </div> );

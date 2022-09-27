@@ -10,6 +10,7 @@ import Meta from 'antd/lib/card/Meta';
 import { ClusterOutlined, RocketOutlined } from '@ant-design/icons';
 
 import SpaceSchema from '../utilises/ModelSchema'
+import DetailizeInfo from '../DetailizeInfo/DetailizeInfoPage';
 
 
 const SpaceCraftList = observer((typeId:any) => {
@@ -23,7 +24,7 @@ const SpaceCraftList = observer((typeId:any) => {
  const ConfirmModelPanel = () => {
   confirm({
       icon:null,
-      content: <SpaceSchema rocketSchemas={spaceCraftSchems} />,
+      content: <DetailizeInfo rocketSchemas={spaceCraftSchems} />,
       onOk:(() =>{}),
   })
 };
@@ -47,7 +48,9 @@ const ConfirmTreeSchema = () => {
 
   const ParsingSchemaData = (spaceCraftElements:any) => {
     spaceCraftElements.map((data:any) => {
-      setSpaceCraftSchems( data.spaceCraftSchema.type)
+      setSpaceCraftSchems(data.spaceCraftSchema.type)
+      console.log('data.spaceCraftSchema.type', data.spaceCraftSchema.type);
+      
     })
   }
 

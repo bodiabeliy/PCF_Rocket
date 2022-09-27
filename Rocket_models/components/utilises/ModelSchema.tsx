@@ -11,9 +11,9 @@ const ModelSchema = (model:any) => {
     return ( 
         <>
         <div className="">
-            View mode:<b></b>
+            View mode:<b>{model.model.schemaTitle}</b>
         </div>
-        {/* <img style={{maxWidth:'80%', marginLeft: "10%"}} src={model.model.schemaUrl} alt="Other rocket" /> */}
+        <img style={{maxWidth:'80%', marginLeft: "10%"}} src={model.model.schemaUrl} alt={model.model.schemaTitle} />
         </>
      );
 }

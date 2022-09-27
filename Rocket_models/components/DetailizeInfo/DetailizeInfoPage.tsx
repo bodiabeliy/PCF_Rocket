@@ -27,17 +27,18 @@ const DetailizeInfo = observer ((rocketSchemas:any) => {
 
   return (
     <div>
+      {console.log('detailed rocketSchemas', rocketSchemas)}
       <Radio.Group onChange={handleModeChange} value={mode} style={{ marginBottom: 8 }} />
       <Tabs
         defaultActiveKey="1"
         tabPosition={mode}
         style={{ height: 220 }}
-        items={spaceCraftSchemas?.type.map((id:any) => {
+        items={rocketSchemas?.rocketSchemas.map((schema:any) => {
           
           return {
-            label:'id',
-            key:id,
-            children: <ModelSchema model={id}  />
+            label:schema.schemaTitle,
+            key:schema.typeId,
+            children: <ModelSchema model={schema}  />
           }
         })}
       />
