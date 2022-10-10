@@ -1,0 +1,26 @@
+{
+  "spaceCrafts":  [
+    {
+      "id":100,
+      "rocketName":"Falcon9", 
+      "rocketShortDescription":"American Rocket", 
+      "rocketDetailedDescription":"The American Rocket with reusable launch system", 
+      "rocketUrl":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Ffalcon9.jpg.png?alt=media&token=7583494e-61bb-4449-aebd-ec0b0ca4ba81"
+    },
+    {
+      "id":101,
+      "rocketName":"Falcon Heavy", 
+      "rocketShortDescription":"American Rocket", 
+      "rocketDetailedDescription":"The American Rocket with reusable launch system", 
+      "rocketUrl":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Ffalcon9.jpg.png?alt=media&token=7583494e-61bb-4449-aebd-ec0b0ca4ba81"
+    },
+    {
+      "typeId":1,
+      "id":40,
+      "rocketName":"ShartX", 
+      "rocketShortDescription":"Mexico Rocket", 
+      "rocketDetailedDescription":"The American Rocket with reusable launch system", 
+      "rocketUrl":"https://firebasestorage.googleapis.com/v0/b/chat-react-2ff9d.appspot.com/o/store%2Ffalcon9.jpg.png?alt=media&token=7583494e-61bb-4449-aebd-ec0b0ca4ba81"
+    }
+  ]
+}

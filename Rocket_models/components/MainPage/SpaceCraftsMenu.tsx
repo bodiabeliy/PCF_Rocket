@@ -14,7 +14,13 @@ const SpaceCraftsMenu = observer (() => {
         spaceCrafts.getSpaceCrafts().then((data:SpaceCraftInterface[]) => {
             setSpaceCraftsArray(data)            
         }); 
+        spaceCrafts.getCrmData().then((data:any) => {
+          console.log('component data', data.value);
+          
+          
+        }); 
     }, [])
+
 
     return ( 
     <div className="page__spacecraft-element">

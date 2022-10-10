@@ -1,0 +1,32 @@
+{
+  "subCategories":  [
+    {
+      "subCategoryTypeId":1,
+      "subCategoryNane":"Military aircrafts"
+    },
+    {
+      "subCategoryTypeId":1,
+      "subCategoryNane":"Commercial aircrafts"
+    },
+    {
+      "subCategoryTypeId":2,
+      "subCategoryNane":"Military helicopter"
+    },
+    {
+      "subCategoryTypeId":2,
+      "subCategoryNane":"Commercial helicopter"
+    },
+    {
+      "subCategoryTypeId":3,
+      "subCategoryNane":"Disposable"
+    },
+    {
+      "subCategoryTypeId":3,
+      "subCategoryNane":"Partially Reusable"
+    },
+    {
+      "subCategoryTypeId":3,
+      "subCategoryNane":"Reusable"
+    }
+  ]
+}

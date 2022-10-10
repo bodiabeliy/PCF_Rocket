@@ -1,0 +1,28 @@
+.infoTreeCard {
+    padding:5px !important;
+    border-radius:8px !important;
+    display:inline-block !important; 
+    width: 100%;
+}
+.infoTreeList {
+    width: 200px;
+}
+
+.infoTreeCardSubChildren {
+    display: flex !important;
+}
+
+
+.ant-card-meta {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.ant-card-body {
+    padding: 5px !important;
+}
+.css-1vs3jbz::before, .css-1vs3jbz::after {
+
+}
