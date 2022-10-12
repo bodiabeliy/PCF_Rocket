@@ -11,7 +11,7 @@ export class RocketModels  implements ComponentFramework.ReactControl<IInputs, I
     
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
     private notifyOutputChanged: () => void;
-
+    private rocket:any;
     /**
      * Empty constructor.
      */
@@ -30,6 +30,7 @@ export class RocketModels  implements ComponentFramework.ReactControl<IInputs, I
         notifyOutputChanged: () => void,
         state: ComponentFramework.Dictionary
     ): void {     
+        this.rocket = context.parameters.sampleProperty;
        this.Data(context.parameters.sampleProperty)
         this.notifyOutputChanged = notifyOutputChanged;
     }
@@ -40,11 +41,11 @@ export class RocketModels  implements ComponentFramework.ReactControl<IInputs, I
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs> |any): React.ReactElement {
-        const params = context.parameters.sampleProperty;
+        const updatedRocket = context.parameters.sampleProperty;        
         this.Data(context.parameters.sampleProperty)
         
         return React.createElement(
-            App, params
+            App, updatedRocket
         );
     }
 

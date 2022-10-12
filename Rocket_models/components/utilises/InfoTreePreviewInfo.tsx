@@ -7,7 +7,6 @@ const infoTreePreviewInfo = (previewInfo:any) => {
     <Card
         style={{ display:"flex" }}
         cover={<img style={{ width: 200 }} alt={previewInfo.data.ImageUrl} src={previewInfo.data.ImageUrl} />}
-        hoverable
         >
         <Meta title={previewInfo.data.Name} description={previewInfo.data.Description} />
         <Button>Look at schema</Button>

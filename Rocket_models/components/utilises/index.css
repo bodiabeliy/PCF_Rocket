@@ -23,6 +23,12 @@
 .ant-card-body {
     padding: 5px !important;
 }
+
+/*  */
 .css-1vs3jbz::before, .css-1vs3jbz::after {
 
+}
+
+.ant-list-item-meta-content {
+    text-align: left;
 }
