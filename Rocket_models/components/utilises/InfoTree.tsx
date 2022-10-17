@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ForkOutlined } from '@ant-design/icons';
+import { ForkOutlined, NodeCollapseOutlined, NodeExpandOutlined } from '@ant-design/icons';
 import { Card, List, Popover } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import { Tree, TreeNode } from 'react-organizational-chart';
@@ -13,7 +13,10 @@ const InfoTree = (infoTreeData: any) => {
   const [L2ParentNode, setL2ParentNode] = React.useState<any>([])
 
   const [isL2ItemsOpen, setIsL2ItemsOpen] = React.useState(false)
+
   const [isL3ItemsOpen, setIsL3ItemsOpen] = React.useState(false)
+
+  const [parentTrees, setParentTrees] = React.useState<boolean>(false)
 
   const [categoryIndexLandingLegs, setCategoryIndexLandingLegs] = React.useState<any>(false)
   const [categoryIndexEngines, setCategoryIndexEngines] = React.useState<any>(false)
@@ -27,40 +30,52 @@ const InfoTree = (infoTreeData: any) => {
   }, [infoTreeData.props.raw.L2Items, parentNode])
 
 
-  const groupedCtegories = (elements: any) => {
-    elements.map((element: any) => {
+  const groupedCtegories = (groupedElements: any) => {
+    groupedElements.map((element: any) => {
 
       const groupedSubCategories = groupBy(element.L3Items, "Id")
-      elements = [groupedSubCategories]
-      setL2ParentNode(elements)
+      groupedElements = [groupedSubCategories];
+      setL2ParentNode(groupedElements);
 
-      return groupedSubCategories
+      return groupedSubCategories;
     })
   }
 
-  const openInfoTreeGroup =(categoryName:any, event:any) => {
-    event.preventDefault();
-    // event.stopPropagination();  
-    if(categoryName == "Landing_Legs") {      
+  const openParentTree =(parentTreeName:any) => {
+    setParentTrees(!parentTrees)
+  }
+
+  const openInfoTreeGroups =(categoryName:any) => {
+    if(categoryName == "Landing_Legs") {   
       setCategoryIndexLandingLegs(!categoryIndexLandingLegs);
+      setIsL3ItemsOpen(false)   
+
     }
 
-    if (categoryName == "Engines") {      
+    if (categoryName == "Engines") { 
       setCategoryIndexEngines(!categoryIndexEngines);
+      setIsL3ItemsOpen(false)   
+
     }
 
-    if(categoryName == "Fins") {      
+    if(categoryName == "Fins") {  
       setCategoryIndexFins(!categoryIndexFins);
+      setIsL3ItemsOpen(false)   
+
     }
 
-    if (categoryName == "Body") {      
+    if (categoryName == "Body") { 
+      setIsL3ItemsOpen(true)   
       setCategoryIndexBody(!categoryIndexBody);
     }
 
-    if(categoryName == "Tanks") {      
+    if(categoryName == "Tanks") {   
       setCategoryIndexTanks(!categoryIndexTanks);
+      setIsL3ItemsOpen(false)   
+
     }
 
+    setIsL3ItemsOpen(true)   
 
   }
   
@@ -101,19 +116,38 @@ const InfoTree = (infoTreeData: any) => {
               className='infoTreeCard'
               
             >
-              <Meta title={L2Item.Name} description={L2Item.Description} />
+              <Meta 
+                avatar={
+                  isL3ItemsOpen ? 
+                  <NodeCollapseOutlined onClick={() => openParentTree(L2Item.Name)} />
+                  :<NodeExpandOutlined onClick={() => openParentTree(L2Item.Name)}/>}
+                title={L2Item.Name} 
+                description={L2Item.Description} />
               {
-                L2ParentNode[0] ?
-                  <TreeNode className='infoTreeCardSubChildren' label={Object.entries(L2ParentNode[0]).map((Categories: any) => {
+                L2ParentNode[0] && parentTrees?
+                  <TreeNode className='infoTreeCardSubChildren' label={Object.entries(L2ParentNode[0]).map((Categories: any, indx:any) => {
                     return (
                       <TreeNode label={
                         <>
                        <Card
                         className='infoTreeCard'
-                        onClick={(event) => openInfoTreeGroup(Categories[0], event)}
                         >
-                          <Meta title={Categories[0]} />
-                          {Categories[0] =="Landing_Legs" &&  categoryIndexLandingLegs == true? 
+                          <Meta 
+                          className='infoTreeCardSubChildren__description'
+                          avatar={
+                            isL3ItemsOpen ? 
+                            <NodeCollapseOutlined onClick={() => openInfoTreeGroups(Categories[0])} />
+                            :<NodeExpandOutlined onClick={() => openInfoTreeGroups(Categories[0])}/>}
+                            title={Categories[0]
+
+                            }  
+                            description={ 
+                              (categoryIndexLandingLegs ||
+                               categoryIndexEngines || 
+                               categoryIndexFins || 
+                               categoryIndexBody||
+                              categoryIndexTanks) == true ? `Nested modules: ${Categories[1].length}`:null}/>
+                            {Categories[0] =="Landing_Legs" &&  categoryIndexLandingLegs == true? 
  
                           <List
                           // id={index.toString()}

@@ -11,7 +11,38 @@
 .infoTreeCardSubChildren {
     display: flex !important;
 }
+.infoTreeCardSubChildren__description {
+    width: 200px;
+}
 
+.infoTree__schema-wrapper {
+   height: 115vh;
+}
+
+h1 {
+    text-align: center;  
+}
+
+.infoTree__schema-title {
+    color: yellowgreen;
+}
+
+.infoTree__schema-content {
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.schema__element:hover {
+    fill: yellowgreen;
+} 
+
+.schema  {
+    height: 100vh;
+}
+
+
+
+/* ant-design customize */
 
 .ant-card-meta {
     display: flex;
@@ -29,6 +60,15 @@
 
 }
 
+.ant-card-meta-avatar {
+    order: 2;
+    padding-left: 16px
+}
+
+
 .ant-list-item-meta-content {
     text-align: left;
+}
+.ant-popover .ant-popover-placement-top {
+    z-index: 2 !important;
 }
