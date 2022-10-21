@@ -41,7 +41,19 @@
 					"Description": "First stage engine",
 					"ImageUrl": "https://rocketapp.blob.core.windows.net/images/Merlin%201D.jpg",
 					"CategoryCode": 0,
-					"Category": "Engine"
+					"Category": "Engine",
+					"schemaUrl": {
+						"svgXML":"http://www.w3.org/2000/svg",
+						"version":"1.0",
+						"width":"1194.000000pt",
+						"height":"1097.000000pt",
+						"viewBox": "0 0 1194.000000 1097.000000",
+						"preserveAspectRatio":"xMidYMid meet",
+						"figureGroup":{
+						   "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
+						}
+					   },
+					   "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 					"Id": "273b88b7-9048-40e9-bdaa-43fdf304b4df",
@@ -61,7 +73,7 @@
                      "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
                   }
                  },
-                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engineSVG-2.json"
+                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 				"Id": "46d43a1b-2614-4ff0-bc6f-d3762aeb9a07",
@@ -81,7 +93,7 @@
                      "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
                   }
                  },
-                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engineSVG.json"
+                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 					"Id": "ea04164f-45eb-4197-812d-95a37fca3dba",
@@ -101,7 +113,7 @@
                      "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
                   }
                  },
-                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engineSVG.json"
+                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 					"Id": "280bfe22-2e1d-46f0-b96a-de7033fc1206",
@@ -121,7 +133,7 @@
                      "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
                   }
                  },
-                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engineSVG.json"
+                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 					"Id": "4c5f0f65-bde7-4c97-8751-13ec3736596d",
@@ -141,7 +153,7 @@
                      "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
                   }
                  },
-                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engineSVG.json"
+                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 					"Id": "74efe1c2-b49d-49d1-89bb-37dc103ce66a",
@@ -161,7 +173,7 @@
                      "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
                   }
                  },
-                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engineSVG.json"
+                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 					"Id": "d9aad9e9-7a59-4308-b091-f5657c32acd5",
@@ -181,7 +193,7 @@
                      "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
                   }
                  },
-                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engineSVG.json"
+                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 					"Id": "7b1090c5-676e-493f-aa52-ccb5cdd65823",
@@ -201,7 +213,7 @@
                      "position": "translate(0.000000,1097.000000) scale(0.100000,-0.100000)"
                   }
                  },
-                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engineSVG.json"
+                 "SvgSchemaUrl":"https://rocketapp.blob.core.windows.net/images/engine-2.json"
 				},
 				{
 					"Id": "d081cd71-200d-453e-a70c-be82f492de2d",

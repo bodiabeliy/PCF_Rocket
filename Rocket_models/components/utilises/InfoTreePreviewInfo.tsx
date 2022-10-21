@@ -14,7 +14,7 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
 
     React.useEffect(() => {
         if (open == true) {
-            modulesGroupHover()
+            selectedGroup()
         }
     }, [open])
 
@@ -38,19 +38,33 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
         xhr.send();
     };
 
-    const modulesGroupHover = () => {
+    const selectedGroup = () => {
         const elements: any = document.querySelectorAll('[data-hover]');
         for (let element of elements) {
-            ['click', 'mouseenter', 'mouseleave'].forEach(e => {
+            ['mouseenter', 'mouseleave'].forEach(e => {
                 element.addEventListener(e, function (event: any) {
-                    console.log("event.target", event.target);
                     const dataValue = event.target.dataset.hover;
                     const targetElements: any = document.querySelectorAll(`[data-hover="${dataValue}"]`)
-                    for (let element of targetElements)
-                        element.classList.toggle('hover');
+
+                    for (let element of targetElements) {
+                        console.log("elements", dataValue);
+                            element.classList.toggle('hover');
+                        // element.style.fill = colorGenerator()
+                    }
+
                 });
             });
         }
+    }
+
+    const colorGenerator = () => {
+        const hexColors = "0123456789ABCDEF"
+        let color = ""
+        for (let i = 0; i < 6; i++) {
+            color += hexColors[Math.floor(Math.random() * hexColors.length)]
+        }
+        console.log("#", color);
+        return "#" + color
     }
 
 
@@ -73,19 +87,25 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                         <svg className="schema" xmlns={previewInfo.data.schemaUrl.svgXML} version={previewInfo.data.schemaUrl.version} width={previewInfo.data.schemaUrl.width} height={previewInfo.data.schemaUrl.height} viewBox={previewInfo.data.schemaUrl.viewBox} preserveAspectRatio={previewInfo.data.schemaUrl.preserveAspectRatio}>
                             <g id={`${previewInfo.data.Name} `} transform={previewInfo.data.schemaUrl.figureGroup.position}>
                                 {modulesList?.L4Items.map((L4Item: any, pathIndex: any) => {
-                                  return (
-                                    <>
-                                        {previewInfo.data.Name.includes("engine") ?
-                                            <>
-                                                {
-                                                    for() {}
-                                                }
+                                    return (
+                                        <>
+                                            {previewInfo.data.Name.includes("engine") ?
+                                                <>
+                                                    {
+                                                        <g data-hover={L4Item.L4ModuleName} className="Regen-Cooled-Nozzle__Group">
+                                                            <Popover placement="left" content={schemaModuleTooltip(L4Item)} trigger="hover">
+                                                                <path className="schema__element" id={`${previewInfo.data.Name + "-" + pathIndex} `} d={L4Item.path} />
+                                                            </Popover>
+                                                        </g>
+                                                            
+                                                    }
 
-                                            </>
-                                            : null}
+                                                </>
+                                                : null}
 
-                                    </>
-                                )})}
+                                        </>
+                                    )
+                                })}
                             </g>
                         </svg>
                         <Button onClick={() => setOpen(false)}>Close Schema</Button>
