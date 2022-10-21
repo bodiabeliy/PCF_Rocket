@@ -32,14 +32,21 @@ h1 {
     background-color: #fff;
 }
 
-.schema__element:hover {
+/* .schema__element:hover {
     fill: yellowgreen;
-} 
+}  */
 
 .schema  {
     height: 100vh;
 }
 
+
+/*  */
+
+
+.hover,.hover:hover * {
+    fill: #ff9900;
+  }
 
 
 /* ant-design customize */
