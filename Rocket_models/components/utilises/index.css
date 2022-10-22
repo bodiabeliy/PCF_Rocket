@@ -43,11 +43,13 @@ h1 {
 
 /*  */
 
+.t[href] {
+    opacity: 0;
+}
 
-.hover,.hover * {
-    fill: #ff9900;
-  }
-
+.t[href] :hover {
+    opacity: 1;
+}
 
 /* ant-design customize */
 

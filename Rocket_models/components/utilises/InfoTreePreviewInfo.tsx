@@ -39,21 +39,32 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
     };
 
     const selectedGroup = () => {
+        let selectedColor=""
         const elements: any = document.querySelectorAll('[data-hover]');
         for (let element of elements) {
-            ['mouseenter', 'mouseleave'].forEach(e => {
+            ['mouseenter'].forEach(e => {
                 element.addEventListener(e, function (event: any) {
                     const dataValue = event.target.dataset.hover;
                     const targetElements: any = document.querySelectorAll(`[data-hover="${dataValue}"]`)
-
+                    selectedColor =  colorGenerator();
                     for (let element of targetElements) {
                         console.log("elements", dataValue);
-                            element.classList.toggle('hover');
-                        // element.style.fill = colorGenerator()
+                        element.style.fill = selectedColor
                     }
 
                 });
             });
+            ['mouseleave'].forEach(e => {
+                element.addEventListener(e, function (event: any) {
+                    const dataValue = event.target.dataset.hover;
+                    const targetElements: any = document.querySelectorAll(`[data-hover="${dataValue}"]`)
+                    for (let element of targetElements) {
+                        console.log("elements", dataValue);
+                        element.style.fill = `black !important`
+                    }
+
+                });
+            })
         }
     }
 
@@ -87,16 +98,25 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                         <svg className="schema" xmlns={previewInfo.data.schemaUrl.svgXML} version={previewInfo.data.schemaUrl.version} width={previewInfo.data.schemaUrl.width} height={previewInfo.data.schemaUrl.height} viewBox={previewInfo.data.schemaUrl.viewBox} preserveAspectRatio={previewInfo.data.schemaUrl.preserveAspectRatio}>
                             <g id={`${previewInfo.data.Name} `} transform={previewInfo.data.schemaUrl.figureGroup.position}>
                                 {modulesList?.L4Items.map((L4Item: any, pathIndex: any) => {
+                                     console.log("L4Item", L4Item?.patternStyles)
                                     return (
                                         <>
                                             {previewInfo.data.Name.includes("engine") ?
                                                 <>
                                                     {
-                                                        <g data-hover={L4Item.L4ModuleName} className="Regen-Cooled-Nozzle__Group">
-                                                            <Popover placement="left" content={schemaModuleTooltip(L4Item)} trigger="hover">
-                                                                <path className="schema__element" id={`${previewInfo.data.Name + "-" + pathIndex} `} d={L4Item.path} />
-                                                            </Popover>
+                                                        
+                                                       L4Item.ModuleImage ?
+                                                       <g data-hover={L4Item.L4ModuleName} className="Regen-Cooled-Nozzle__Group">
+                                                       <defs>
+                                                       <pattern style={L4Item?.patternStyles}  id={pathIndex} patternUnits="userSpaceOnUse" width="100" height="100">
+                                                           <image href={L4Item?.ModuleImage} x={L4Item?.patternStyles?.x} y={L4Item?.patternStyles?.y} width="100" height="100" />
+                                                       </pattern>
+                                                       </defs>
+                                                       <Popover placement="left" content={schemaModuleTooltip(L4Item)} trigger="hover">
+                                                           <path className="schema__element" id={`${previewInfo.data.Name + "-" + pathIndex} `} d={L4Item.path}  fill={`url(#${pathIndex})`}/>
+                                                       </Popover>
                                                         </g>
+                                                       :null
                                                             
                                                     }
 
