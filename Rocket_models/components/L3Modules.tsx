@@ -7,13 +7,6 @@ import InfoTreePreviewInfo from "./InfoTreePreviewInfo";
 
 const L3Modules = (categoryModules: any, categoryIndex: any, categoriesList?: any) => {
 
-
-    const [categoryIndexLandingLegs, setCategoryIndexLandingLegs] = React.useState<any>(false)
-    const [categoryIndexEngines, setCategoryIndexEngines] = React.useState<any>(false)
-    const [categoryIndexFins, setCategoryIndexFins] = React.useState<any>(false)
-    const [categoryIndexBody, setCategoryIndexBody] = React.useState<any>(false)
-    const [categoryIndexTanks, setCategoryIndexTanks] = React.useState<any>(false)
-
     const [selectedCategory, setSelectedCategory] = React.useState(categoryModules.categoryModules[0])
     const [isSelectedCategory, setIsSelectedCategory] = React.useState<boolean>(false)
 
@@ -27,7 +20,6 @@ const L3Modules = (categoryModules: any, categoryIndex: any, categoriesList?: an
                 setIsSelectedCategory(!isSelectedCategory)
             }
         }
-        console.log("category", selectedCategory);
     }
 
     return (
@@ -40,7 +32,7 @@ const L3Modules = (categoryModules: any, categoryIndex: any, categoriesList?: an
                         <Meta
                             className='infoTreeCardSubChildren__description'
                             avatar={
-                                <NodeExpandOutlined onClick={() => openInfoTreeGroups(categoryModules.categoryModules[0])} />}
+                            <NodeExpandOutlined onClick={() => openInfoTreeGroups(categoryModules.categoryModules[0])} />}
                             title={categoryModules.categoryModules[0]}
                             description={
                                 (isSelectedCategory) == true ? `Nested modules: ${categoryModules.categoryModules[1].length}` : null}

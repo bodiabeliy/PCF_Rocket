@@ -286,6 +286,24 @@
 			"ImageUrl": "https://rocketapp.blob.core.windows.net/images/F9_1stStage.png",
 			"CategoryCode": null,
 			"Category": "Stages"
+		},
+		{
+			"L3Items": [
+				{
+					"Id": "8b2ab85f-3f37-4d5b-aec6-1a7e13e6d746",
+					"Name": "Body",
+					"Description": "Aluminium oxigen tank",
+					"ImageUrl": "https://rocketapp.blob.core.windows.net/images/F9_InterStage_Body.jpg",
+					"CategoryCode": null,
+					"Category": "Inter Body"
+				}
+			],
+			"Id": "eefb96de-37bc-462c-8ad0-78ea934ad435",
+			"Name": "Inter stage",
+			"Description": "Intermediate stage to connect 1st and 2nd stages",
+			"ImageUrl": "https://rocketapp.blob.core.windows.net/images/F9_InterStage.png",
+			"CategoryCode": null,
+			"Category": "Stages"
 		}
 	],
 	"Id": "e0480b32-d239-415f-b558-6dae17052547",

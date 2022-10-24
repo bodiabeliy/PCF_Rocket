@@ -17,18 +17,8 @@ const InfoTree = (infoTreeData: any) => {
   const [parentTrees, setParentTrees] = React.useState<boolean>(false)
 
 
-  const [parentFirstStage, setParentFirstStage] = React.useState(false)
-  const [parentInterStage, setParentIntertStage] = React.useState(false)
-
-
-
-
-
-  React.useEffect(() => {
-    setParentNode(infoTreeData.props.raw.L2Items);
-    groupedCtegories(parentNode)
-  }, [infoTreeData.props.raw.L2Items, parentNode])
-
+  const [selectedParentCategory, setSelectedParentCategory] = React.useState("")
+  const [isSelectedParentCategory, setIsSelectedParentCategory] = React.useState<boolean>(false)
 
 
   const groupedCtegories = (groupedElements: any) => {
@@ -41,29 +31,21 @@ const InfoTree = (infoTreeData: any) => {
     })
   }
 
-  const openParentTrees = (L2Item: any, L2Index: any) => {
-    console.log("L2Item", L2Item);
+  const openParentTrees = (parentCategoryName: any) => {
+    console.log("parentNode", parentNode);
 
-    if (L2Index == 0) {
-
-      switch (L2Item.Name) {
-        case "First stage":
-          console.log("work!");
-          console.log("L2ParentNode", L2ParentNode);
-          
-          setParentFirstStage(!parentFirstStage)
-      }
-    }
-
-    if (L2Index == 1) {
-
-      switch (L2Item.Name) {
-        case "Inter stage":
-          console.log("work-2!");
-          setParentIntertStage(!parentInterStage)
-      }
+    for (let parentCategory of parentNode) {      
+        if (parentCategory.Name == parentCategoryName) {
+          console.log("parentCategoryName", parentCategoryName);
+          setSelectedParentCategory(parentCategory.Name)
+          setIsSelectedParentCategory(!isSelectedParentCategory)
+          groupedCtegories(parentNode)
+        }
     }
   }
+
+  
+
 
 
 
@@ -77,6 +59,10 @@ const InfoTree = (infoTreeData: any) => {
       return result;
     }, {})
   };
+
+  React.useEffect(() => {
+    setParentNode(infoTreeData.props.raw.L2Items);
+  }, [L2ParentNode[0], infoTreeData])
 
 
   return (
@@ -106,22 +92,21 @@ const InfoTree = (infoTreeData: any) => {
               >
                 <Meta
                   avatar={
-                    <NodeExpandOutlined onClick={() => openParentTrees(L2Item, L2Index)} />}
+                    <NodeExpandOutlined onClick={() => openParentTrees(L2Item.Name)} />}
                   title={L2Item.Name}
                   description={L2Item.Description}
                 />
-                {L2Item.Name == "First stage" && parentFirstStage ?
+                {L2ParentNode[0] && L2Item.Name == selectedParentCategory && isSelectedParentCategory ?
                   <>
                     <TreeNode className='infoTreeCardSubChildren' label={Object.entries(L2ParentNode[0]).map((Categories: any, indx: any) => {
 
                       return (
+                        
                         <L3Modules categoryModules={Categories} categoryIndex={indx} categoriesList={L2ParentNode[0]} />
                       )
                     })}>
                     </TreeNode>
-                  </> : L2Item.Name == "Inter stage" && parentInterStage ?
-                    <>test</>
-                    : null
+                  </> : null
                 }
               </Card>
             } />
