@@ -2,7 +2,7 @@ import { Button } from 'antd';
 import * as React from 'react';
 import { createBrowserRouter, RouterProvider  } from 'react-router-dom';
 import MainPage from './components/MainPage/MainPage'
-import InfoTree from './components/utilises/InfoTree'
+import InfoTree from './components/InfoTree'
 import "antd/dist/antd.css";
 import './GlobalStyles/styles.css'
 

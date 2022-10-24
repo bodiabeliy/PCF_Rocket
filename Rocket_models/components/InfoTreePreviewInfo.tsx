@@ -1,6 +1,5 @@
 import { Button, Card, Modal, Popover } from "antd";
 import Meta from "antd/lib/card/Meta";
-import { AnyARecord } from "dns";
 import * as React from "react"
 
 const infoTreePreviewInfo = (previewInfo: any | string) => {
