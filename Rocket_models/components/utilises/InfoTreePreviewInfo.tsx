@@ -60,7 +60,7 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                     const targetElements: any = document.querySelectorAll(`[data-hover="${dataValue}"]`)
                     for (let element of targetElements) {
                         console.log("elements", dataValue);
-                        element.style.fill = `black !important`
+                        element.style.fill = `black`
                     }
 
                 });
@@ -107,13 +107,9 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                                         
                                                        L4Item.ModuleImage ?
                                                        <g data-hover={L4Item.L4ModuleName} className="Regen-Cooled-Nozzle__Group">
-                                                       <defs>
-                                                       <pattern style={L4Item?.patternStyles}  id={pathIndex} patternUnits="userSpaceOnUse" width="100" height="100">
-                                                           <image href={L4Item?.ModuleImage} x={L4Item?.patternStyles?.x} y={L4Item?.patternStyles?.y} width="100" height="100" />
-                                                       </pattern>
-                                                       </defs>
+
                                                        <Popover placement="left" content={schemaModuleTooltip(L4Item)} trigger="hover">
-                                                           <path className="schema__element" id={`${previewInfo.data.Name + "-" + pathIndex} `} d={L4Item.path}  fill={`url(#${pathIndex})`}/>
+                                                           <path className="schema__element" id={`${previewInfo.data.Name + "-" + pathIndex} `} d={L4Item.path} />
                                                        </Popover>
                                                         </g>
                                                        :null
