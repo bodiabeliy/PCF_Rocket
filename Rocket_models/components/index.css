@@ -41,15 +41,6 @@ h1 {
 }
 
 
-/*  */
-
-.t[href] {
-    opacity: 0;
-}
-
-.t[href] :hover {
-    opacity: 1;
-}
 
 /* ant-design customize */
 

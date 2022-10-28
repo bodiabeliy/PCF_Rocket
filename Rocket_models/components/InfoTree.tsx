@@ -19,13 +19,16 @@ const InfoTree = (infoTreeData: any) => {
   const [selectedParentCategory, setSelectedParentCategory] = React.useState("")
   const [isSelectedParentCategory, setIsSelectedParentCategory] = React.useState<boolean>(false)
 
+  const [isNull, setIsNull] = React.useState(false)
+
   const openParentTrees = (parentCategoryObject: any) => {
-    
-    for (let parentCategory of parentNode) {      
-        if (parentCategory.Name == parentCategoryObject.Name) {
-          setL2ParentNode(groupBy(parentCategoryObject.L3Items, "Category"))
+   
+    for (let parentCategory of parentNode) {  
+          
+        if (parentCategory.Name == parentCategoryObject.Name) {          
+          setL2ParentNode(groupBy(parentCategoryObject.L3Items, "Category"))          
           setSelectedParentCategory(parentCategory.Name)
-          setIsSelectedParentCategory(!isSelectedParentCategory)
+          setIsSelectedParentCategory(!isSelectedParentCategory)          
         }
     }
   }
