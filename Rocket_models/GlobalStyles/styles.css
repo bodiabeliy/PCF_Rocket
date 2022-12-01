@@ -1,5 +1,5 @@
 /* only for development */
-.control-pane {
+/* .control-pane {
     padding: 0;
 }
 .control-container {
@@ -10,7 +10,7 @@
 }
 .navbar {
     display: none;
-}
+} */
 
 /* reusable antd component styles */
 .ant-modal {

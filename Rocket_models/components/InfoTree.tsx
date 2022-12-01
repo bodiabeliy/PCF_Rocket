@@ -8,6 +8,7 @@ import L3Modules from './L3Modules'
 
 import './index.css'
 const InfoTree = (infoTreeData: any) => {
+  console.log("infoTreeData: ", infoTreeData);
 
   let [parentNode, setParentNode] = React.useState<any>([])
 
@@ -43,7 +44,7 @@ const InfoTree = (infoTreeData: any) => {
   };
 
   React.useEffect(() => {
-    setParentNode(infoTreeData.props.raw.L2Items);
+    setParentNode(infoTreeData.props?.L2Items);
   }, [L2ParentNode[0], infoTreeData])
 
 
@@ -57,7 +58,7 @@ const InfoTree = (infoTreeData: any) => {
           className='infoTreeCard'
 
         >
-          <Meta title={infoTreeData.props.raw.Name} description={infoTreeData.props.raw.Description} />
+          <Meta title={infoTreeData.props?.Name} description={infoTreeData.props?.Description} />
         </Card>
       }
     >

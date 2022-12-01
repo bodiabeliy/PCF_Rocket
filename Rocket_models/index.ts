@@ -4,8 +4,6 @@ import * as React from "react";
 import {AppConfig} from '../AppConfig'
 import {PublicClientApplication} from '@azure/msal-browser'
 
-import * as data from "../JSON tables/SpaceCraftSchema.json";
-
 export class RocketModels  implements ComponentFramework.ReactControl<IInputs, IOutputs> {
 
     
@@ -31,8 +29,6 @@ export class RocketModels  implements ComponentFramework.ReactControl<IInputs, I
         state: ComponentFramework.Dictionary
     ): void {     
         this.rocket = context.parameters.sampleProperty;
-       this.Data(context.parameters.sampleProperty)
-        this.notifyOutputChanged = notifyOutputChanged;
     }
 
     /**
@@ -40,18 +36,15 @@ export class RocketModels  implements ComponentFramework.ReactControl<IInputs, I
      * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
      * @returns ReactElement root react element for the control
      */
-    public updateView(context: ComponentFramework.Context<IInputs> |any): React.ReactElement {
-        const updatedRocket = context.parameters.sampleProperty;        
-        this.Data(context.parameters.sampleProperty)
+    public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
         
+        this.rocket = context.parameters.sampleProperty;        
         return React.createElement(
-            App, updatedRocket
+            App, JSON.parse(context.parameters.sampleProperty.raw)
         );
     }
 
-    private Data(inputData:any) {
-        inputData.raw! = data       
-    }
+
 
     /**
      * It is called by the framework prior to a control receiving new data.
