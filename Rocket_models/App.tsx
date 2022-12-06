@@ -9,7 +9,8 @@ import './GlobalStyles/styles.css'
 
 function App (paramsData:any) {
 const [isOpen, setIsOpen] = React.useState(false)
-  
+console.log("gett data: ", paramsData);
+
   return ( 
    
     <>

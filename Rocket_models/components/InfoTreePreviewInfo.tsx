@@ -9,7 +9,8 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
     type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 
     React.useEffect(() => {
-        getJSON(previewInfo.data.SvgSchemaUrl)
+        console.log("data schema SVG:  ", previewInfo.data.SvgSchemaJsonUrl);
+        getJSON(previewInfo.data.SvgSchemaJsonUrl)
     }, [])
 
     React.useEffect(() => {
@@ -26,12 +27,15 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
 
     const getJSON = (url: string) => {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
+        xhr.open('GET', "https://rocketapp.blob.core.windows.net/json/engine-structure.json", true);
+        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
         xhr.responseType = 'json';
         xhr.onload = function () {
             let status = xhr.status;
             if (status === 200) {
-                if (xhr.response != null) {
+                console.log("XHR:", xhr.response);
+                
+                if (xhr.response != null) {                    
                     setModuleList(xhr.response)
                 }
             } else {
@@ -40,6 +44,8 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
             }
         };
         xhr.send();
+
+
     };
 
     const selectedGroup = () => {
@@ -111,16 +117,22 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                     children: 
                                     <>
                                     <h1>Module:  <span className="infoTree__schema-title">{previewInfo.data.Name}</span> </h1>
-                                    <svg className="schema" xmlns={previewInfo.data.schemaUrl.svgXML} version={previewInfo.data.schemaUrl.version} width={previewInfo.data.schemaUrl.width} height={previewInfo.data.schemaUrl.height} viewBox={previewInfo.data.schemaUrl.viewBox} preserveAspectRatio={previewInfo.data.schemaUrl.preserveAspectRatio}>
-                                    <g id={`${previewInfo.data.Name} `} transform={previewInfo.data.schemaUrl.figureGroup.position}>
+                                    <svg className="schema" 
+                                        
+                                        xmlns={"http://www.w3.org/2000/svg"} 
+                                        width={"400pt"} 
+                                        height={"990pt"} 
+                                        viewBox={"-200 -700 900 900"} 
+                                        preserveAspectRatio={"xMidYMid meet"}>
+                                    <g style={{transform: "scale(0.19, -0.19)"}} id={`${previewInfo.data.Name} `}>
                                         {modulesList?.L4Items.map((L4Item: any, pathIndex: any) => {
                                             return (
                                                 <>
                                                         <>
                                                             {
-        
+                                                                
                                                                 L4Item.ModuleImage ?
-                                                                    <g data-hover={L4Item.L4ModuleName} className="Regen-Cooled-Nozzle__Group">
+                                                                    <g  fill="#000" data-hover={L4Item.L4ModuleName} className="Regen-Cooled-Nozzle__Group">
         
                                                                         <Popover placement="left" content={schemaModuleTooltip(L4Item)} trigger="hover">
                                                                             <path className="schema__element" id={`${previewInfo.data.Name + "-" + pathIndex} `} d={L4Item.path} />

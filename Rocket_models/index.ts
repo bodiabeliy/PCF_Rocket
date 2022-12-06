@@ -4,7 +4,7 @@ import * as React from "react";
 import {AppConfig} from '../AppConfig'
 import {PublicClientApplication} from '@azure/msal-browser'
 
-export class RocketModels  implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class RocketEl  implements ComponentFramework.ReactControl<IInputs, IOutputs> {
 
     
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
