@@ -6,8 +6,8 @@ import { Tree, TreeNode } from 'react-organizational-chart';
 
 import L3Modules from './L3Modules'
 
-import './index.css'
-const InfoTree = (infoTreeData: any) => {
+import '../index.css'
+const L2Items = (infoTreeData: any) => {
   console.log("infoTreeData: ", infoTreeData);
 
   let [parentNode, setParentNode] = React.useState<any>([])
@@ -99,4 +99,4 @@ const InfoTree = (infoTreeData: any) => {
   );
 }
 
-export default InfoTree;
+export default L2Items;

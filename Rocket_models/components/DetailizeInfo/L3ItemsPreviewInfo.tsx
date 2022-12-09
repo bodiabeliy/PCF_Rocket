@@ -1,7 +1,7 @@
 import { Button, Card, Empty, Modal, Popover, Radio, RadioChangeEvent, Tabs } from "antd";
 import Meta from "antd/lib/card/Meta";
 import * as React from "react"
-import { } from "../enums"
+import { } from "../../enums"
 const infoTreePreviewInfo = (previewInfo: any | string) => {
     const [open, setOpen] = React.useState(false);
     const [modulesList, setModuleList] = React.useState<any>()
@@ -30,13 +30,11 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
             .then((response) => response.json())
             .then((data) => {
                 if (data != null) { 
-                    console.log("recieved data: ", data);
                     setModuleList(data)
                 }
             })
             .catch((error) => {
                 console.log("happpend error:"+ error);
-                
             });
     };
 
@@ -50,7 +48,6 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                     const targetElements: any = document.querySelectorAll(`[data-hover="${dataValue}"]`)
                     selectedColor = colorGenerator();
                     for (let element of targetElements) {
-                        console.log("elements", dataValue);
                         element.style.fill = selectedColor
                     }
 
@@ -61,7 +58,6 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                     const dataValue = event.target.dataset.hover;
                     const targetElements: any = document.querySelectorAll(`[data-hover="${dataValue}"]`)
                     for (let element of targetElements) {
-                        console.log("elements", dataValue);
                         element.style.fill = `black`
                     }
 
@@ -76,7 +72,6 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
         for (let i = 0; i < 6; i++) {
             color += hexColors[Math.floor(Math.random() * hexColors.length)]
         }
-        console.log("#", color);
         return "#" + color
     }
 

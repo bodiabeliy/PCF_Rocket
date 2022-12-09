@@ -3,7 +3,7 @@ import { Card, List, Popover } from "antd";
 import Meta from "antd/lib/card/Meta";
 import * as React from "react"
 import { TreeNode } from "react-organizational-chart";
-import InfoTreePreviewInfo from "./InfoTreePreviewInfo";
+import InfoTreePreviewInfo from "../DetailizeInfo/L3ItemsPreviewInfo";
 
 const L3Modules = (categoryModules: any, categoryIndex: any, categoriesList?: any) => {
 
@@ -13,7 +13,6 @@ const L3Modules = (categoryModules: any, categoryIndex: any, categoriesList?: an
     const openInfoTreeGroups = (categoryName: any) => {
         let categories = Array.from(Object.keys(categoryModules.categoriesList))
         for (let category of categories) {
-            console.log("category", category);
             if (category == categoryName) {
                 setSelectedCategory(category)
                 setIsSelectedCategory(!isSelectedCategory)

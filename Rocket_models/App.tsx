@@ -1,19 +1,18 @@
 import { Button } from 'antd';
 import * as React from 'react';
-import InfoTree from './components/InfoTree'
+import L2Items from './components/InfoTrees/L2Items'
 import "antd/dist/antd.css";
 import './GlobalStyles/styles.css'
 
 
 function App (paramsData:any) {
 const [isOpen, setIsOpen] = React.useState(false)
-console.log("gett data: ", paramsData);
 
   return ( 
    
     <>
     <Button  onClick={() => setIsOpen(!isOpen)}>Open InfoTree</Button>
-     {isOpen == true ?  <InfoTree props={paramsData} />: null}
+     {isOpen == true ?  <L2Items props={paramsData} />: null}
     </>
    
   );
