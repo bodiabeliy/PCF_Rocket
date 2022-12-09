@@ -32,6 +32,11 @@ h1 {
     background-color: #fff;
 }
 
+.infoTree__schema-empty {
+    display: flex;
+    justify-content: center;
+}
+
 /* .schema__element:hover {
     fill: yellowgreen;
 }  */

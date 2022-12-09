@@ -1,4 +1,4 @@
-import { Button, Card, Modal, Popover, Radio, RadioChangeEvent, Tabs } from "antd";
+import { Button, Card, Empty, Modal, Popover, Radio, RadioChangeEvent, Tabs } from "antd";
 import Meta from "antd/lib/card/Meta";
 import * as React from "react"
 import { } from "../enums"
@@ -6,12 +6,12 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
     const [open, setOpen] = React.useState(false);
     const [modulesList, setModuleList] = React.useState<any>()
     const [isOpenSchema, setIsOpenSchema] = React.useState(false)
+
     type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 
-    React.useEffect(() => {
-        console.log("data schema SVG:  ", previewInfo.data.SvgSchemaJsonUrl);
+    React.useEffect(() => {        
         getJSON(previewInfo.data.SvgSchemaJsonUrl)
-    }, [])
+    }, [open])
 
     React.useEffect(() => {
         if (open == true) {
@@ -26,26 +26,18 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
     };
 
     const getJSON = (url: string) => {
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', "https://rocketapp.blob.core.windows.net/json/engine-structure.json", true);
-        xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        xhr.responseType = 'json';
-        xhr.onload = function () {
-            let status = xhr.status;
-            if (status === 200) {
-                console.log("XHR:", xhr.response);
-                
-                if (xhr.response != null) {                    
-                    setModuleList(xhr.response)
+        fetch(url)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data != null) { 
+                    console.log("recieved data: ", data);
+                    setModuleList(data)
                 }
-            } else {
-                alert(`Response error! Status: ${status}`)
-
-            }
-        };
-        xhr.send();
-
-
+            })
+            .catch((error) => {
+                console.log("happpend error:"+ error);
+                
+            });
     };
 
     const selectedGroup = () => {
@@ -90,14 +82,20 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
 
 
 
-    const schemaModuleTooltip = (L4Module: any) =>
-    (
-        <>
-            <div className="">
-                <h2>{L4Module.L4ModuleName}</h2>
-            </div>
-        </>
-    )
+
+
+    const schemaModuleTooltip = (L4Module: any) => {
+        return  (
+            <>
+                <div className="">
+                    <h2>{L4Module.L4ModuleName}</h2>
+                </div>
+            </>
+        )
+    }
+   
+
+
 
     return (<>
         {
@@ -117,12 +115,15 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                     children: 
                                     <>
                                     <h1>Module:  <span className="infoTree__schema-title">{previewInfo.data.Name}</span> </h1>
-                                    <svg className="schema" 
+                                    <>
+                                    {
+                                        previewInfo.data.SvgSchemaJsonUrl !="null" ?
+                                        <svg className="schema" 
                                         
                                         xmlns={"http://www.w3.org/2000/svg"} 
                                         width={"400pt"} 
                                         height={"990pt"} 
-                                        viewBox={"-200 -700 900 900"} 
+                                        viewBox={"-200 -750 900 900"} 
                                         preserveAspectRatio={"xMidYMid meet"}>
                                     <g style={{transform: "scale(0.19, -0.19)"}} id={`${previewInfo.data.Name} `}>
                                         {modulesList?.L4Items.map((L4Item: any, pathIndex: any) => {
@@ -132,12 +133,15 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                                             {
                                                                 
                                                                 L4Item.ModuleImage ?
-                                                                    <g  fill="#000" data-hover={L4Item.L4ModuleName} className="Regen-Cooled-Nozzle__Group">
-        
-                                                                        <Popover placement="left" content={schemaModuleTooltip(L4Item)} trigger="hover">
-                                                                            <path className="schema__element" id={`${previewInfo.data.Name + "-" + pathIndex} `} d={L4Item.path} />
-                                                                        </Popover>
+                                                                <Popover placement="left" content={schemaModuleTooltip(L4Item)} trigger="hover">
+                                                                    <g 
+                                                                    data-hover={L4Item.L4ModuleName} 
+                                                                    className={"Regen-Cooled-Nozzle__Group " + L4Item.L4ModuleName}
+                                                                    >
+                                                                        <path className="schema__element" id={`${previewInfo.data.Name + "-" + pathIndex} `} d={L4Item.path} />
                                                                     </g>
+                                                                    </Popover>
+
                                                                     : null
         
                                                             }
@@ -148,6 +152,18 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                         })}
                                     </g>
                                 </svg>
+                                         :<div className="infoTree__schema-empty">
+                                         <Empty 
+                                         image="https://rocketapp.blob.core.windows.net/images/failed-load.svg"
+                                         
+                                         description={
+                                             <span><b>No structure for with item!</b></span>
+                                         }
+                                          />
+                                         </div>
+                                    }
+                                    </>
+
                                     </>,
                                 },
                                 {
@@ -155,7 +171,11 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                     key: '2',
                                     children: <div>
                                         <h1>General photo:  <span className="infoTree__schema-title">{previewInfo.data.Name}</span> </h1>
-                                        <img style={{width:"100vh"}} src={previewInfo.data.ImageUrl} alt={previewInfo.data.Name} />
+                                        <img style={{width:"100%"}} 
+                                            src={previewInfo.data.ImageUrl!="null" ?
+                                             previewInfo.data.ImageUrl
+                                             :"https://rocketapp.blob.core.windows.net/images/failed load.png"} 
+                                            alt={previewInfo.data.Name} />
                                     </div>,
                                 }
                             ]}
@@ -167,7 +187,15 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                 :
                 <Card
                     style={{ display: "flex" }}
-                    cover={<img style={{ width: 200 }} alt={previewInfo.data.ImageUrl} src={previewInfo.data.ImageUrl} />}
+                    cover={previewInfo.data.ImageUrl !="null" ?
+                    <img style={{ width: 200 }} alt={previewInfo.data.ImageUrl} src={previewInfo.data.ImageUrl} />
+                    :<Empty 
+                        image="https://rocketapp.blob.core.windows.net/images/failed load.png"
+                        description={
+                            <span><b>No structure for with item!</b></span>
+                        }
+
+                    />}
                 >
                     <Meta title={previewInfo.data.Name} description={previewInfo.data.Description} />
                     <Button onClick={() => setOpen(true)}>Look at schema</Button>

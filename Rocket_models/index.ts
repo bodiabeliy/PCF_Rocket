@@ -1,10 +1,9 @@
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import App  from "./App";
 import * as React from "react";
-import {AppConfig} from '../AppConfig'
-import {PublicClientApplication} from '@azure/msal-browser'
 
-export class RocketEl  implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+
+export class PCFRocketAppDemo  implements ComponentFramework.ReactControl<IInputs, IOutputs> {
 
     
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
