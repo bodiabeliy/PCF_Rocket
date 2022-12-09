@@ -33,14 +33,23 @@ h1 {
 }
 
 .infoTree__schema-empty {
+    text-align: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 }
 
-/* .schema__element:hover {
-    fill: yellowgreen;
-}  */
+
+.infoTree__schema-empty img{
+  margin: auto;
+}
+
+.infoTree__schema-empty span{
+   font-size: 24px
+  }
+  
 
 .schema  {
     height: 100vh;
 }
+
+  

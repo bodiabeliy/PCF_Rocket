@@ -148,13 +148,8 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                     </g>
                                 </svg>
                                          :<div className="infoTree__schema-empty">
-                                         <Empty 
-                                         image="https://rocketapp.blob.core.windows.net/images/failed-load.svg"
-                                         
-                                         description={
-                                             <span><b>No structure for with item!</b></span>
-                                         }
-                                          />
+                                            <img style={{width:"100%"}}  src="https://rocketapp.blob.core.windows.net/images/failed-load.svg" alt="" />
+                                            <span><b>No structure for with item!</b></span>
                                          </div>
                                     }
                                     </>
@@ -165,7 +160,10 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                     label: 'Preview',
                                     key: '2',
                                     children: <div>
+                                        {previewInfo.data.ImageUrl!="null" ?
                                         <h1>General photo:  <span className="infoTree__schema-title">{previewInfo.data.Name}</span> </h1>
+                                        : <>Photo not exist!</>
+                                        }
                                         <img style={{width:"100%"}} 
                                             src={previewInfo.data.ImageUrl!="null" ?
                                              previewInfo.data.ImageUrl
@@ -187,7 +185,7 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                     :<Empty 
                         image="https://rocketapp.blob.core.windows.net/images/failed load.png"
                         description={
-                            <span><b>No structure for with item!</b></span>
+                            <span><b>Photo not exist!</b></span>
                         }
 
                     />}
