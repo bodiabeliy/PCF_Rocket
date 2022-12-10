@@ -3,7 +3,7 @@ import App  from "./App";
 import * as React from "react";
 
 
-export class PCFRocketAppDemo  implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class PCFRocketAppDemo2  implements ComponentFramework.ReactControl<IInputs, IOutputs> {
 
     
     private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;

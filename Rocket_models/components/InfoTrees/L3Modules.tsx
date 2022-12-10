@@ -5,11 +5,22 @@ import * as React from "react"
 import { TreeNode } from "react-organizational-chart";
 import InfoTreePreviewInfo from "../DetailizeInfo/L3ItemsPreviewInfo";
 
+/* 
+    L3Modules - tree components for L3
+*/ 
 const L3Modules = (categoryModules: any, categoryIndex: any, categoriesList?: any) => {
 
+/* 
+  set default state of components variables
+  useState - special React functionality, that allows control all changes thanks setter function (second argument)
+*/ 
     const [selectedCategory, setSelectedCategory] = React.useState(categoryModules.categoryModules[0])
     const [isSelectedCategory, setIsSelectedCategory] = React.useState<boolean>(false)
 
+    
+/* 
+    function opening nested Modules by categories
+*/ 
     const openInfoTreeGroups = (categoryName: any) => {
         let categories = Array.from(Object.keys(categoryModules.categoriesList))
         for (let category of categories) {

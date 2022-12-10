@@ -7,21 +7,31 @@ import { Tree, TreeNode } from 'react-organizational-chart';
 import L3Modules from './L3Modules'
 
 import '../index.css'
-const L2Items = (infoTreeData: any) => {
-  console.log("infoTreeData: ", infoTreeData);
 
+/* 
+  L2Items - tree component for L2
+*/ 
+const L2Items = (infoTreeData: any) => {
   let [parentNode, setParentNode] = React.useState<any>([])
 
+
+/* 
+  set default state of components variables
+  useState - special React functionality, that allows control all changes thanks setter function (second argument)
+*/ 
   const [L2ParentNode, setL2ParentNode] = React.useState<any>([])
   const [isL3ItemsOpen, setIsL3ItemsOpen] = React.useState(false)
   const [parentTrees, setParentTrees] = React.useState<boolean>(false)
 
-
   const [selectedParentCategory, setSelectedParentCategory] = React.useState("")
   const [isSelectedParentCategory, setIsSelectedParentCategory] = React.useState<boolean>(false)
-
   const [isNull, setIsNull] = React.useState(false)
 
+
+/* 
+  function opening Parent (L2) items
+  setter functions (setL2parentNode for example), - set new data for current variable
+*/ 
   const openParentTrees = (parentCategoryObject: any) => {
    
     for (let parentCategory of parentNode) {  
@@ -34,6 +44,9 @@ const L2Items = (infoTreeData: any) => {
     }
   }
 
+/* 
+  function grouping existed L2 items categories
+*/ 
   const groupBy = (array: any, key: any) => {
     return array.reduce((result: any, currentValue: any) => {
       (result[currentValue[key]] = result[currentValue[key]] || []).push(
@@ -43,6 +56,10 @@ const L2Items = (infoTreeData: any) => {
     }, {})
   };
 
+
+/* 
+  useEffect -  special React finctionality (hooks), that allows set trigger, when data are changed
+*/ 
   React.useEffect(() => {
     setParentNode(infoTreeData.props?.L2Items);
   }, [L2ParentNode[0], infoTreeData])

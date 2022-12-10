@@ -1,14 +1,25 @@
 import { Button, Card, Empty, Modal, Popover, Radio, RadioChangeEvent, Tabs } from "antd";
 import Meta from "antd/lib/card/Meta";
 import * as React from "react"
-import { } from "../../enums"
+
+/* 
+    component with detailed information about module
+*/ 
 const infoTreePreviewInfo = (previewInfo: any | string) => {
+/* 
+  set default state of components variables
+  useState - special React functionality, that allows control all changes thanks setter function (second argument)
+*/ 
     const [open, setOpen] = React.useState(false);
     const [modulesList, setModuleList] = React.useState<any>()
     const [isOpenSchema, setIsOpenSchema] = React.useState(false)
+    const [mode, setMode] = React.useState<TabPosition>('left');
 
     type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 
+/* 
+  useEffect -  special React finctionality (hooks), that allows set trigger, when data are changed
+*/ 
     React.useEffect(() => {        
         getJSON(previewInfo.data.SvgSchemaJsonUrl)
     }, [open])
@@ -19,12 +30,17 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
         }
     }, [open])
 
-    const [mode, setMode] = React.useState<TabPosition>('left');
-
+/* 
+    handler function, that allows switch between different types of view mods
+*/ 
     const handleModeChange = (e: RadioChangeEvent) => {
         setMode(e.target.value);
     };
 
+
+/* 
+    function getting informaton about module structure
+*/ 
     const getJSON = (url: string) => {
         fetch(url)
             .then((response) => response.json())
@@ -38,6 +54,10 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
             });
     };
 
+
+/* 
+    function that allows select multiple joined structure elements, by groupe name
+*/ 
     const selectedGroup = () => {
         let selectedColor = ""
         const elements: any = document.querySelectorAll('[data-hover]');
@@ -66,6 +86,9 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
         }
     }
 
+/* 
+    function for setting random color for current structure`s group
+*/ 
     const colorGenerator = () => {
         const hexColors = "0123456789ABCDEF"
         let color = ""
@@ -75,10 +98,9 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
         return "#" + color
     }
 
-
-
-
-
+/* 
+    tooltip render function
+*/ 
     const schemaModuleTooltip = (L4Module: any) => {
         return  (
             <>
