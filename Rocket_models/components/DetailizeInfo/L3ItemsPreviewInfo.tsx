@@ -1,3 +1,4 @@
+import { CloseOutlined, ZoomInOutlined } from "@ant-design/icons";
 import { Button, Card, Empty, Modal, Popover, Radio, RadioChangeEvent, Tabs } from "antd";
 import Meta from "antd/lib/card/Meta";
 import * as React from "react"
@@ -12,7 +13,6 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
 */ 
     const [open, setOpen] = React.useState(false);
     const [modulesList, setModuleList] = React.useState<any>()
-    const [isOpenSchema, setIsOpenSchema] = React.useState(false)
     const [mode, setMode] = React.useState<TabPosition>('left');
 
     type TabPosition = 'left' | 'right' | 'top' | 'bottom';
@@ -183,37 +183,39 @@ const infoTreePreviewInfo = (previewInfo: any | string) => {
                                     key: '2',
                                     children: <div>
                                         {previewInfo.data.ImageUrl!="null" ?
-                                        <h1>General photo:  <span className="infoTree__schema-title">{previewInfo.data.Name}</span> </h1>
-                                        : <>Photo not exist!</>
+                                        <div className="infoTree__schema-emptyPreview">
+                                            <h1>General photo:  <span className="infoTree__schema-title">{previewInfo.data.Name}</span> </h1>
+                                            <img style={{width:"500px" }} 
+                                                src={previewInfo.data.ImageUrl!="null" ?
+                                                previewInfo.data.ImageUrl
+                                                :"https://rocketapp.blob.core.windows.net/images/failed load.png"} 
+                                                alt={previewInfo.data.Name} />
+                                        </div>
+                                        : <div className="infoTree__schema-emptyPreviewContainer">
+                                            No preview image!
+                                        </div>
                                         }
-                                        <img style={{width:"100%"}} 
-                                            src={previewInfo.data.ImageUrl!="null" ?
-                                             previewInfo.data.ImageUrl
-                                             :"https://rocketapp.blob.core.windows.net/images/failed load.png"} 
-                                            alt={previewInfo.data.Name} />
+                                        
                                     </div>,
                                 }
                             ]}
                         />
-                        
-                        <Button onClick={() => setOpen(false)}>Close Schema</Button>
+                        <CloseOutlined className="schema__card-icon closeIcon" onClick={() => setOpen(false)}/>
                     </div>
                 </div>
                 :
                 <Card
                     style={{ display: "flex" }}
-                    cover={previewInfo.data.ImageUrl !="null" ?
-                    <img style={{ width: 200 }} alt={previewInfo.data.ImageUrl} src={previewInfo.data.ImageUrl} />
-                    :<Empty 
-                        image="https://rocketapp.blob.core.windows.net/images/failed load.png"
-                        description={
-                            <span><b>Photo not exist!</b></span>
-                        }
+                    cover={previewInfo.data.ImageUrl !="null" 
+                    ?<img style={{ width: 100, height:100 }} alt={previewInfo.data.ImageUrl} src={previewInfo.data.ImageUrl} />
+                    :<span>No Image</span>
 
-                    />}
+                    }
                 >
-                    <Meta title={previewInfo.data.Name} description={previewInfo.data.Description} />
-                    <Button onClick={() => setOpen(true)}>Look at schema</Button>
+                    <div className="schema__card-description">
+                        <Meta title={previewInfo.data.Name} description={previewInfo.data.Description} />
+                        <ZoomInOutlined className="schema__card-icon detailedIcon" onClick={() => setOpen(true)}/>
+                    </div>
                 </Card>
         }
 

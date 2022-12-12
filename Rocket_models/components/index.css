@@ -43,6 +43,20 @@ h1 {
   margin: auto;
 }
 
+.infoTree__schema-emptyPreview{
+    padding: 5px;
+    margin: auto;
+}
+
+.infoTree__schema-emptyPreviewContainer {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: calc(100vh - 10%);
+    font-size: 36px;
+}
+
 .infoTree__schema-empty span{
    font-size: 24px
   }
@@ -51,5 +65,27 @@ h1 {
 .schema  {
     height: 100vh;
 }
+.schema__card-description {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
 
+.schema__popover-element {
+    margin-right: 10px;
+}
+.schema__card-icon {
+    transform: scale(1.5);
+    margin-left: 10px;
+}
+
+.schema__card-icon:hover {
+    color: #b6b6b6f0;
+    transform: scale(2);
+}
   
+.closeIcon {
+    position: absolute;
+    top: 8.5px;
+    right: 10px;
+}

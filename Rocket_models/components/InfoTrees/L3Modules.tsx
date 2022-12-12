@@ -8,7 +8,7 @@ import InfoTreePreviewInfo from "../DetailizeInfo/L3ItemsPreviewInfo";
 /* 
     L3Modules - tree components for L3
 */ 
-const L3Modules = (categoryModules: any, categoryIndex: any, categoriesList?: any) => {
+const L3Modules = (categoryModules: any) => {
 
 /* 
   set default state of components variables
@@ -61,6 +61,7 @@ const L3Modules = (categoryModules: any, categoryIndex: any, categoriesList?: an
                                                 // actions={[<a onClick={() => detailedDescription(category)}>more</a>]}
                                                 >
                                                     <List.Item.Meta
+                                                    className="schema__popover-element"
                                                         title={category.Name}
                                                         description={category.Description}
                                                     >
